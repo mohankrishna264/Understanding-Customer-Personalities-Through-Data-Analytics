@@ -2,7 +2,7 @@
 Kaggle Dataset Link https://www.kaggle.com/imakash3011/customer-personality-analysis
 
 ## Context 📜:
-Customer Personality Analysis involves an in-depth examination of a company’s customer base to better understand their behaviors, preferences, and needs. This analysis allows businesses to tailor their products and marketing strategies to specific customer segments, leading to more targeted and efficient decision-making.
+Customer Personality Analysis involves an in-depth examination of a company’s customer base better to understand their behaviors, preferences, and needs. This analysis allows businesses to tailor their products and marketing strategies to specific customer segments, leading to more targeted and efficient decision-making.
 ![image](https://github.com/user-attachments/assets/e877c9dc-187f-4cec-8bf2-9bacf13d334a)
 
 
@@ -61,27 +61,14 @@ Reporting & Visualization:
 
 Analyzed customer segments based on key attributes such as age, income, and product preferences.
 Generated visualizations to display cluster characteristics and responses to marketing campaigns.
-Tableau Dashboards:
 
+Tableau Dashboards:
 Created two Tableau dashboards based on the cleaned datasets at different stages.
-Visuals 📈📊:
-Plotly Visuals:
-Visuals created with Plotly during the analysis:
-
-bash
-Copy code
-# Replace this with output images of your Plotly charts, saved locally as image files.
-Line[39]: Visual_1.png
-Line[40]: Visual_2.png
-...
-Tableau Dashboards:
-Dashboard 1 (from data_visuals.csv):
-
-This dashboard includes insights on customer segmentation by age, income, and product preferences.
-Dashboard 2 (from data_visuals2.csv):
 
 This dashboard explores deeper insights into customer behavior over time, responses to marketing campaigns, and website engagement.
 ## Conclusion:
 Using customer segmentation, businesses can improve their product marketing strategies, target high-potential customer groups, and streamline customer engagement.
 By analyzing customer behaviors and responses to campaigns, businesses can better anticipate the needs of their customers and create personalized experiences.
+
+Follow me on Linkedin  https://www.linkedin.com/in/mohan-krishna-kola/
 Thank you for exploring! ⭐
