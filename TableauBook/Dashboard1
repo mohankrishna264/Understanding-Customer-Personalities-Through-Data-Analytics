@@ -1,0 +1,66 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset
+df = pd.read_csv('marketing_campaign.csv', sep='\t')
+
+# Calculate age based on 'Year_Birth'
+df['Age'] = 2021 - df['Age']
+
+# Dashboard 1: Creating the components
+
+# 1. Total Expenses and Income
+total_expenses = df['MntWines'].sum() + df['MntMeatProducts'].sum() + df['MntFishProducts'].sum() + df['MntSweetProducts'].sum() + df['MntGoldProds'].sum()
+total_income = df['Income'].sum()
+
+plt.figure(figsize=(16,12))
+plt.subplot(3, 3, 1)
+plt.text(0.5, 0.5, f'Expenses\n{total_expenses:,.2f}', fontsize=24, ha='center')
+plt.axis('off')
+
+plt.subplot(3, 3, 2)
+plt.text(0.5, 0.5, f'Income\n{total_income:,.2f}', fontsize=24, ha='center')
+plt.axis('off')
+
+# 2. Pie Charts for Marital Status
+plt.subplot(3, 3, 3)
+df.groupby('Marital_Status')['Income'].sum().plot.pie(autopct='%1.2f%%', colors=['orange', 'black'])
+plt.title('Income vs Marital Status')
+plt.ylabel('')
+
+plt.subplot(3, 3, 4)
+df.groupby('Marital_Status')['MntWines'].sum().plot.pie(autopct='%1.2f%%', colors=['orange', 'black'])
+plt.title('Expenses vs Marital Status')
+plt.ylabel('')
+
+# 3. Bar Charts for Expenses vs Education
+plt.subplot(3, 3, 5)
+sns.barplot(x='Education', y='Income', data=df, estimator=sum, palette='Set2')  # Using Set2 palette
+plt.title('Expenses vs Education')
+
+# 4. Age vs Expenses
+plt.subplot(3, 3, 6)
+sns.barplot(x='Age', y='MntWines', data=df, estimator=sum, color='black')  # Single color option
+plt.title('Age vs Expenses')
+
+# 5. Products Bar Chart
+plt.subplot(3, 3, 7)
+products = ['MntWines', 'MntMeatProducts', 'MntGoldProds', 'MntFishProducts', 'MntSweetProducts', 'MntFruits']
+df[products].sum().plot(kind='bar', color='black')
+plt.title('Products')
+
+# 6. Monthly Analysis (Num Web Visits and Response)
+df['Dt_Customer'] = pd.to_datetime(df['Dt_Customer'])
+df['Month'] = df['Dt_Customer'].dt.month_name()
+
+plt.subplot(3, 3, 8)
+sns.countplot(x='Month', data=df, palette='Set2', order=pd.date_range("2000-01-01", "2000-12-01", freq='M').strftime('%B'))
+plt.title('Monthly Analysis: Num Web Visits')
+
+plt.subplot(3, 3, 9)
+sns.countplot(x='Month', hue='Response', data=df, palette='Set1', order=pd.date_range("2000-01-01", "2000-12-01", freq='M').strftime('%B'))
+plt.title('Monthly Analysis: Response')
+
+plt.tight_layout()
+plt.show()
