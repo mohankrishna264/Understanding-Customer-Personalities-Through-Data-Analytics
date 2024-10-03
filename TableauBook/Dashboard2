@@ -1,0 +1,64 @@
+from sklearn.cluster import KMeans
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import StandardScaler
+
+# Load the dataset (assumed cleaned)
+df = pd.read_csv('marketing_campaign.csv', sep='\t')
+
+# Preprocess: Drop any null values and calculate age based on 'Year_Birth'
+df.dropna(inplace=True)
+df['Age'] = 2021 - df['Age']
+
+# Selecting features for clustering
+X = df[['Income', 'Age', 'MntWines', 'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumWebVisitsMonth']]
+
+# Scale the data
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Apply K-Means clustering
+kmeans = KMeans(n_clusters=3, random_state=0)
+df['Cluster'] = kmeans.fit_predict(X_scaled)
+
+# Create new features for visualization
+df['Engaged_Days'] = df['Recency']
+campaign_columns = ['AcceptedCmp1', 'AcceptedCmp2', 'AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5']
+df['Total_Accepted'] = df[campaign_columns].sum(axis=1)
+
+# Start plotting the dashboard
+plt.figure(figsize=(16, 12))
+
+# 1. Average Age in Clusters
+plt.subplot(3, 3, 1)
+sns.barplot(x='Cluster', y='Age', data=df, estimator='mean', palette='Set1')
+plt.title('Avg Age in Clusters')
+
+# 2. Total Expenses by Cluster
+plt.subplot(3, 3, 2)
+sns.barplot(x='Cluster', y='MntWines', data=df, estimator='sum', palette='Set1')
+plt.title('Total Expenses by Cluster')
+
+# 3. Engaged Days by Cluster
+plt.subplot(3, 3, 3)
+sns.barplot(x='Cluster', y='Engaged_Days', data=df, estimator='sum', palette='Set1')
+plt.title('Engaged Days by Cluster')
+
+# 4. Web Purchases by Cluster
+plt.subplot(3, 3, 4)
+sns.barplot(x='Cluster', y='NumWebPurchases', data=df, estimator='sum', palette='Set1')
+plt.title('Web Purchases by Cluster')
+
+# 5. Accepted Campaigns by Cluster
+plt.subplot(3, 3, 5)
+sns.barplot(x='Cluster', y='Total_Accepted', data=df, estimator='sum', palette='Set1')
+plt.title('Total Accepted Campaigns by Cluster')
+
+# 6. Income Distribution by Age and Cluster
+plt.subplot(3, 3, 6)
+sns.barplot(x='Age', y='Income', hue='Cluster', data=df, palette='Set1')
+plt.title('Income by Age and Cluster')
+
+plt.tight_layout()
+plt.show()
