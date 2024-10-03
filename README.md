@@ -1,121 +1,87 @@
-# Customer Personality Analysis🤡🤓😱
+# Customer Personality Analysis 🤓📊
+Kaggle Dataset Link https://www.kaggle.com/imakash3011/customer-personality-analysis
 
-- Kaggle dataset link: https://www.kaggle.com/imakash3011/customer-personality-analysis
---------------------------------------
 ## Context 📜:
-- **Problem Statement** 🚨:
-Customer Personality Analysis is a detailed analysis of a company’s ideal customers. It helps a business to better understand its customers and makes it easier for them to modify products according to the specific needs, behaviors and concerns of different types of customers.
-Customer personality analysis helps a business to modify its product based on its target customers from different types of customer segments. For example, instead of spending money to market a new product to every customer in the company’s database, a company can analyze which customer segment is most likely to buy the product and then market the product only on that particular segment.
+Customer Personality Analysis involves an in-depth examination of a company’s customer base to better understand their behaviors, preferences, and needs. This analysis allows businesses to tailor their products and marketing strategies to specific customer segments, leading to more targeted and efficient decision-making.
+![image](https://github.com/user-attachments/assets/e877c9dc-187f-4cec-8bf2-9bacf13d334a)
 
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/Blog_Banner_v1-01-1024x410.jpg' width='600px' ></img>
-----------------------------------
-## Content 📃:
-**Attributes**
 
-- ID: Customer's unique identifier
-- Year_Birth: Customer's birth year
-- Education: Customer's education level
-- Marital_Status: Customer's marital status
-- Income: Customer's yearly household income
-- Kidhome: Number of children in customer's household
-- Teenhome: Number of teenagers in customer's household
-- Dt_Customer: Date of customer's enrollment with the company
-- Recency: Number of days since customer's last purchase
-- Complain: 1 if customer complained in the last 2 years, 0 otherwise
-Products
-------------------------------------------------------------------
-- MntWines: Amount spent on wine in last 2 years
-- MntFruits: Amount spent on fruits in last 2 years
-- MntMeatProducts: Amount spent on meat in last 2 years
-- MntFishProducts: Amount spent on fish in last 2 years
-- MntSweetProducts: Amount spent on sweets in last 2 years
-- MntGoldProds: Amount spent on gold in last 2 years
-Promotion
-------------------------------------------------------------
-- NumDealsPurchases: Number of purchases made with a discount
-- AcceptedCmp1: 1 if customer accepted the offer in the 1st campaign, 0 otherwise
-- AcceptedCmp2: 1 if customer accepted the offer in the 2nd campaign, 0 otherwise
-- AcceptedCmp3: 1 if customer accepted the offer in the 3rd campaign, 0 otherwise
-- AcceptedCmp4: 1 if customer accepted the offer in the 4th campaign, 0 otherwise
-- AcceptedCmp5: 1 if customer accepted the offer in the 5th campaign, 0 otherwise
-- Response: 1 if customer accepted the offer in the last campaign, 0 otherwise
-Place
-----------------------------------------------------------------------------
-- NumWebPurchases: Number of purchases made through the company’s web site
-- NumCatalogPurchases: Number of purchases made using a catalogue
-- NumStorePurchases: Number of purchases made directly in stores
-- NumWebVisitsMonth: Number of visits to company’s web site in the last month
+## Problem Statement 🚨:
+How can a company segment its customers based on their personalities and buying behaviors? The goal is to cluster customers and determine how different groups respond to marketing campaigns, thus enabling companies to focus their efforts on high-potential segments.
 
--------------------------------------------------------------------------
-## Target🎯:
-**Need to perform clustering to summarize customer segments.**
-The most important part of a customer personality analysis is getting the answers to questions such as:
-1. What people say about your product: what gives customers’ attitude towards the product.
-2. What people do: which reveals what people are doing rather than what they are saying about your product.
 
-In the section below, I’ll walk you through a data science project on analyzing customer personality with python. Here I will be using a dataset that contains data collected from a marketing campaign, where our task is to predict how different customer segments will respond for a particular product or service.
+## Attributes 📃:
+ID: Customer's unique identifier
+Year_Birth: Customer's birth year
+Education: Customer's education level
+Marital_Status: Customer's marital status
+Income: Customer's yearly household income
+Kidhome: Number of children in the customer's household
+Teenhome: Number of teenagers in the customer's household
+Dt_Customer: Date of customer's enrollment with the company
+Recency: Number of days since customer's last purchase
+Complain: 1 if customer complained in the last 2 years, 0 otherwise
+## Products:
+MntWines: Amount spent on wine in last 2 years
+MntFruits: Amount spent on fruits in last 2 years
+MntMeatProducts: Amount spent on meat in last 2 years
+MntFishProducts: Amount spent on fish in last 2 years
+MntSweetProducts: Amount spent on sweets in last 2 years
+MntGoldProds: Amount spent on gold in last 2 years
+### Promotion:
+NumDealsPurchases: Number of purchases made with a discount
+AcceptedCmp1 - AcceptedCmp5: Indicates if the customer accepted offers in campaigns 1 to 5, respectively
+Response: 1 if the customer accepted the offer in the last campaign
+### Place:
+NumWebPurchases: Purchases made through the company's website
+NumCatalogPurchases: Purchases made using a catalogue
+NumStorePurchases: Purchases made directly in stores
+NumWebVisitsMonth: Visits to the company’s website in the last month
+## Target 🎯:
+Perform clustering to segment the customers and summarize their behaviors. The main questions we aim to answer are:
 
-----------------------------------------------------------------------
-## Approach🪧:
-- Firstly I collected dataset from *Kaggle* and imported with help of **Pandas**, analayzed data and figured out number of columns and rows also there were how many null values in every column. Most of the columns are binay i.e 0 & 1 so I plotted count graph for every binary attribute column.
-Filled the null values by mean of that column. Performed *Exploratory Data Analysis*, *Data Visualization* by **Matplotlib**, **Seaborn** and **Plotly**. Merged some columns into one which contains simillar properties and dropped non-useful columns in the dataset. As the problem is to find types of personaliy of customers so **Clustering** is the finest way to do this task.
-- Technically this is a **Machine Learning** problem and for clustering **K-Means** is the perfect choice. To find perfect number of customers, I used **Silhoutte Method**.
-- After finding number of clusters in the dataset I visualized thoses cluster(types of customers) with many other attributes of the dataset and made a report at the end of the notebook.
-- Saved clean and well organize data from two different stages and made two Tableau dashboards.
-------------------------------------------------------------------------------------------
-## Visuals📈📊:
-- Visuals from **Plotly** are not visible on GitHub, so here are those visuals.
+What do customers say and feel about the product?
+What actions do customers take in relation to the product?
+Approach 🪧:
+Data Collection & Cleaning:
 
-**Plotly** Visuals from notebook
+Collected data from Kaggle.
+Conducted exploratory data analysis (EDA) to inspect the dataset’s structure (columns, rows, missing values).
+Imputed missing values using the mean.
+Grouped similar columns and dropped non-useful ones.
+Exploratory Data Analysis & Visualization:
 
-Line[39]:
+Visualized key binary attributes using count plots (e.g., campaign acceptance rates).
+Used matplotlib, seaborn, and plotly for creating visualizations.
+Clustering (K-Means):
 
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot.png' height=300px, width=350px></img>
+Applied K-Means clustering to group customers into segments.
+Used the Silhouette method to identify the optimal number of clusters.
+Reporting & Visualization:
 
-Line[40]:
+Analyzed customer segments based on key attributes such as age, income, and product preferences.
+Generated visualizations to display cluster characteristics and responses to marketing campaigns.
+Tableau Dashboards:
 
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot2.png' height=300px, width=350px></img>
+Created two Tableau dashboards based on the cleaned datasets at different stages.
+Visuals 📈📊:
+Plotly Visuals:
+Visuals created with Plotly during the analysis:
 
-Line[41]:
+bash
+Copy code
+# Replace this with output images of your Plotly charts, saved locally as image files.
+Line[39]: Visual_1.png
+Line[40]: Visual_2.png
+...
+Tableau Dashboards:
+Dashboard 1 (from data_visuals.csv):
 
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot3.png' height=300px, width=350px></img>
+This dashboard includes insights on customer segmentation by age, income, and product preferences.
+Dashboard 2 (from data_visuals2.csv):
 
-Line[42]:
-
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot4.png' height=300px, width=350px></img>
-
-Line[43]:
-
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot5.png' height=300px, width=350px></img>
-
-Line[44]:
-
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot6.png' height=300px, width=350px></img>
-
-Line[45]:
-
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot7.png' height=300px, width=350px></img>
-
-Line[46]:
-
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot8.png' height=300px, width=350px></img>
-
-Line[47]:
-
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/newplot9).png' height=300px, width=350px></img>
-
---------------------------------------------------------------------------------------------------------------------------------------------------
-## Tableau Dashboards:
-
-Dashboard 1:
-(by **data_visuals.csv**)
-
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/Dashboard1.png'></img>
-
-Dashboard 2:
-(by **data_visuals2.csv**)
-
-<img src='https://github.com/karan842/Data-Science-Projects/blob/master/Customer%20Personality%20Analysis/Images/Dashboard2.png'></img>
-
------------------------------------------------------------------------------------------------------------------
-## Thank You⭐
+This dashboard explores deeper insights into customer behavior over time, responses to marketing campaigns, and website engagement.
+## Conclusion:
+Using customer segmentation, businesses can improve their product marketing strategies, target high-potential customer groups, and streamline customer engagement.
+By analyzing customer behaviors and responses to campaigns, businesses can better anticipate the needs of their customers and create personalized experiences.
+Thank you for exploring! ⭐
